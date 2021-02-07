@@ -43,5 +43,16 @@ class PerformerTest extends TestCase
         } catch (PerformistException $e) {
             $this->assertSame('"Performist\\Mock\\InvalidHandler" handler should implements the invoke() method.', $e->getMessage());
         }
+
+        // Add action without handler
+        $registry->add(ActionWithoutHandler::class);
+        $result = $performer->perform(new ActionWithoutHandler());
+
+        $this->assertNull($result);
     }
+}
+
+class ActionWithoutHandler implements ActionInterface
+{
+
 }
