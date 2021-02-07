@@ -1,0 +1,29 @@
+{
+    "name": "mradhi/performist",
+    "description": "PHP library to perform a group of actions elegantly",
+    "type": "library",
+    "license": "MIT",
+    "homepage": "https://guennichi.com",
+    "authors": [
+        {
+            "name": "Radhi Guennichi",
+            "email": "radhi@guennichi.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Performist\\": "lib/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Performist\\": "tests/"
+        }
+    },
+    "require": {
+        "php": ">=7.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
+}
