@@ -15,8 +15,8 @@ before_install:
 install:
     - travis_retry composer install --prefer-dist --no-interaction
 
+script:
+    - vendor/bin/phpunit -c phpunit.xml.dist
+
 after_success:
     - travis_retry php vendor/bin/php-coveralls
-
-script:
-    - XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-text
