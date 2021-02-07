@@ -16,4 +16,4 @@ install:
     - travis_retry composer install --prefer-dist --no-interaction
 
 script:
-    - vendor/bin/phpunit --coverage-text
+    - XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-text
