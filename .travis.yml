@@ -16,7 +16,8 @@ install:
     - travis_retry composer install --prefer-dist --no-interaction
 
 script:
-    - vendor/bin/phpunit -c phpunit.xml.dist
+    - mkdir -p build/logs
+    - vendor/bin/phpunit --coverage-clover build/logs/clover.xml
 
 after_success:
     - travis_retry php vendor/bin/php-coveralls
