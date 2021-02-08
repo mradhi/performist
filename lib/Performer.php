@@ -28,7 +28,7 @@ class Performer implements PerformerInterface
     /**
      * @inheritDoc
      */
-    public function perform(ActionInterface $action, array $middlewares = [])
+    public function perform($action, array $middlewares = [])
     {
         $handler = $this->registry->get(get_class($action));
 
@@ -42,7 +42,7 @@ class Performer implements PerformerInterface
 
         return $this->handlerPeeler
             ->middlewares($middlewares)
-            ->peel($action, function (ActionInterface $action) use ($handler) {
+            ->peel($action, function ($action) use ($handler) {
                 return $handler($action);
             });
     }

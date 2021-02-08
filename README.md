@@ -16,7 +16,7 @@ composer require guennichi/performist
 ### Action Performer
 
 ```php
-class RegisterUser implements \Guennichi\Performist\ActionInterface
+class RegisterUser
 {
     protected string $username;
     protected string $password;
@@ -87,7 +87,7 @@ implements `\Performist\MiddlewareInterface`:
 ```php
 class MyMiddleware implements \Guennichi\Performist\MiddlewareInterface
 {
-    public function handle(\Guennichi\Performist\ActionInterface $action, Closure $next)
+    public function handle($action, Closure $next)
     {
         // Do something here before performing the action...
         // ...

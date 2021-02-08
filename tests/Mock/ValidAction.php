@@ -11,9 +11,7 @@
 namespace Guennichi\Performist\Tests\Mock;
 
 
-use Guennichi\Performist\ActionInterface;
-
-class ValidAction implements ActionInterface
+class ValidAction
 {
 
 }

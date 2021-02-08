@@ -59,8 +59,8 @@ class Registry
      */
     private function validateActionClass(string $actionClass): void
     {
-        if (!is_a($actionClass, ActionInterface::class, true)) {
-            throw new PerformistException(sprintf('"%s" should implements "%s".', $actionClass, ActionInterface::class));
+        if (!class_exists($actionClass)) {
+            throw new PerformistException(sprintf('"%s" class does not exist.', $actionClass));
         }
     }
 }

@@ -11,9 +11,7 @@
 namespace Guennichi\Performist\Tests\Mock;
 
 
-use Guennichi\Performist\ActionInterface;
-
-class SomeAction implements ActionInterface
+class SomeAction
 {
     public string $message = '';
     public array $runs = [];

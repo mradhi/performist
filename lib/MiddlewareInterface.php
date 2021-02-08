@@ -16,10 +16,10 @@ use Closure;
 interface MiddlewareInterface
 {
     /**
-     * @param ActionInterface $action
-     * @param Closure         $next
+     * @param mixed $action
+     * @param Closure $next
      *
      * @return mixed
      */
-    public function handle(ActionInterface $action, Closure $next);
+    public function handle($action, Closure $next);
 }

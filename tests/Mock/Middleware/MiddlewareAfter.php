@@ -12,18 +12,14 @@ namespace Guennichi\Performist\Tests\Mock\Middleware;
 
 
 use Closure;
-use Guennichi\Performist\ActionInterface;
 use Guennichi\Performist\MiddlewareInterface;
-use Guennichi\Performist\Tests\Mock\SomeAction;
 
 class MiddlewareAfter implements MiddlewareInterface
 {
     /**
      * @inheritDoc
-     *
-     * @param SomeAction $action
      */
-    public function handle(ActionInterface $action, Closure $next)
+    public function handle($action, Closure $next)
     {
         $result = $next($action);
 

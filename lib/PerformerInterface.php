@@ -18,12 +18,12 @@ interface PerformerInterface
     /**
      * Executes the handler of a given action.
      *
-     * @param ActionInterface $action
+     * @param mixed $action
      * @param MiddlewareInterface[] $middlewares
      *
      * @return mixed
      *
      * @throws PerformistException
      */
-    public function perform(ActionInterface $action, array $middlewares = []);
+    public function perform($action, array $middlewares = []);
 }

@@ -32,7 +32,7 @@ class HandlerPeeler
         return $this;
     }
 
-    public function peel(ActionInterface $action, Closure $next)
+    public function peel($action, Closure $next)
     {
         $handleFunction = $this->createHandleFunction($next);
 
@@ -47,14 +47,14 @@ class HandlerPeeler
 
     private function createLayer(Closure $nextLayer, MiddlewareInterface $layer): Closure
     {
-        return function (ActionInterface $action) use ($nextLayer, $layer) {
+        return function ($action) use ($nextLayer, $layer) {
             return $layer->handle($action, $nextLayer);
         };
     }
 
     private function createHandleFunction(Closure $handle): Closure
     {
-        return function (ActionInterface $action) use ($handle) {
+        return function ($action) use ($handle) {
             return $handle($action);
         };
     }

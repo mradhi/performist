@@ -13,7 +13,6 @@ namespace Guennichi\Performist\Tests;
 
 use Guennichi\Performist\Exception\PerformistException;
 use Guennichi\Performist\Registry;
-use Guennichi\Performist\Tests\Mock\InvalidAction;
 use Guennichi\Performist\Tests\Mock\SomeAction;
 use Guennichi\Performist\Tests\Mock\SomeHandler;
 use Guennichi\Performist\Tests\Mock\UndefinedAction;
@@ -44,10 +43,10 @@ class RegistryTest extends TestCase
 
         // Add invalid action class.
         try {
-            $registry->add(InvalidAction::class);
+            $registry->add('Guennichi\\Performist\\Tests\\Mock\\InvalidAction');
             $this->fail('No exception thrown.');
         } catch (PerformistException $e) {
-            $this->assertSame('"Guennichi\\Performist\\Tests\\Mock\\InvalidAction" should implements "Guennichi\\Performist\\ActionInterface".', $e->getMessage());
+            $this->assertSame('"Guennichi\\Performist\\Tests\\Mock\\InvalidAction" class does not exist.', $e->getMessage());
         }
 
         // Get undefined action handler

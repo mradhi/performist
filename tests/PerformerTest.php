@@ -56,7 +56,7 @@ class PerformerTest extends TestCase
     }
 }
 
-class ActionWithoutHandler implements ActionInterface
+class ActionWithoutHandler
 {
 
 }
