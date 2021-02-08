@@ -11,7 +11,6 @@
 namespace Guennichi\Performist\Tests;
 
 
-use Guennichi\Performist\ActionInterface;
 use Guennichi\Performist\Exception\PerformistException;
 use Guennichi\Performist\HandlerPeeler;
 use Guennichi\Performist\Performer;
