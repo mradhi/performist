@@ -8,7 +8,7 @@ A standalone action performer library without dependencies.
 ## Installation
 
 ```bash
-composer require mradhi/performist
+composer require guennichi/performist
 ```
 
 ## Usage
