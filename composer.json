@@ -1,5 +1,5 @@
 {
-    "name": "mradhi/performist",
+    "name": "guennichi/performist",
     "description": "PHP library to perform a group of actions elegantly",
     "type": "library",
     "license": "MIT",
@@ -12,12 +12,12 @@
     ],
     "autoload": {
         "psr-4": {
-            "Performist\\": "lib/"
+            "Guennichi\\Performist\\": "lib/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Performist\\": "tests/"
+            "Guennichi\\Performist\\Tests\\": "tests/"
         }
     },
     "require": {

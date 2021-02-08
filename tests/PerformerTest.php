@@ -8,16 +8,20 @@
  * file that was distributed with this source code.
  */
 
-namespace Performist;
+namespace Guennichi\Performist\Tests;
 
 
-use Performist\Exception\PerformistException;
-use Performist\Mock\InvalidHandler;
-use Performist\Mock\Middleware\MiddlewareAfter;
-use Performist\Mock\Middleware\MiddlewareBefore;
-use Performist\Mock\SomeAction;
-use Performist\Mock\SomeHandler;
-use Performist\Mock\ValidAction;
+use Guennichi\Performist\ActionInterface;
+use Guennichi\Performist\Exception\PerformistException;
+use Guennichi\Performist\HandlerPeeler;
+use Guennichi\Performist\Performer;
+use Guennichi\Performist\Registry;
+use Guennichi\Performist\Tests\Mock\InvalidHandler;
+use Guennichi\Performist\Tests\Mock\Middleware\MiddlewareAfter;
+use Guennichi\Performist\Tests\Mock\Middleware\MiddlewareBefore;
+use Guennichi\Performist\Tests\Mock\SomeAction;
+use Guennichi\Performist\Tests\Mock\SomeHandler;
+use Guennichi\Performist\Tests\Mock\ValidAction;
 use PHPUnit\Framework\TestCase;
 
 class PerformerTest extends TestCase
@@ -41,7 +45,7 @@ class PerformerTest extends TestCase
             $performer->perform(new ValidAction());
             $this->fail('No exception thrown.');
         } catch (PerformistException $e) {
-            $this->assertSame('"Performist\\Mock\\InvalidHandler" handler should implements the invoke() method.', $e->getMessage());
+            $this->assertSame('"Guennichi\\Performist\\Tests\\Mock\\InvalidHandler" handler should implements the invoke() method.', $e->getMessage());
         }
 
         // Add action without handler

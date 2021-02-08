@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Performist\Exception;
+namespace Guennichi\Performist\Exception;
 
 
 use Exception;

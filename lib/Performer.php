@@ -8,10 +8,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Performist;
+namespace Guennichi\Performist;
 
 
-use Performist\Exception\PerformistException;
+use Guennichi\Performist\Exception\PerformistException;
 
 class Performer implements PerformerInterface
 {

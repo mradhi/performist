@@ -16,7 +16,7 @@ composer require mradhi/performist
 ### Action Performer
 
 ```php
-class RegisterUser implements \Performist\ActionInterface
+class RegisterUser implements \Guennichi\Performist\ActionInterface
 {
     protected string $username;
     protected string $password;
@@ -38,7 +38,7 @@ class RegisterUser implements \Performist\ActionInterface
    }
 }
 
-class RegisterUserHandler implements \Performist\HandlerInterface
+class RegisterUserHandler implements \Guennichi\Performist\HandlerInterface
 {
     // Inject DB and other services here...
     
@@ -57,12 +57,12 @@ class RegisterUserHandler implements \Performist\HandlerInterface
 }
 
 // Register actions/handlers
-$registry = new \Performist\Registry();
+$registry = new \Guennichi\Performist\Registry();
 $registry->add(RegisterUser::class, new RegisterUserHandler());
 $registry->add(OtherAction::class, new OtherActionHandler());
 
 // Instantiate the performer.
-$performer = new \Performist\Performer($registry, new \Performist\HandlerPeeler());
+$performer = new \Guennichi\Performist\Performer($registry, new \Guennichi\Performist\HandlerPeeler());
 
 // Do the job
 $user = $performer->perform(new RegisterUser('foo@bar.com', 'password'), [
@@ -85,9 +85,9 @@ To be able to use the middleware feature for this library, you need to create a 
 implements `\Performist\MiddlewareInterface`:
 
 ```php
-class MyMiddleware implements \Performist\MiddlewareInterface
+class MyMiddleware implements \Guennichi\Performist\MiddlewareInterface
 {
-    public function handle(\Performist\ActionInterface $action, Closure $next)
+    public function handle(\Guennichi\Performist\ActionInterface $action, Closure $next)
     {
         // Do something here before performing the action...
         // ...

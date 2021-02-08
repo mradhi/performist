@@ -8,15 +8,16 @@
  * file that was distributed with this source code.
  */
 
-namespace Performist;
+namespace Guennichi\Performist\Tests;
 
 
-use Performist\Exception\PerformistException;
-use Performist\Mock\InvalidAction;
-use Performist\Mock\SomeAction;
-use Performist\Mock\SomeHandler;
-use Performist\Mock\UndefinedAction;
-use Performist\Mock\ValidAction;
+use Guennichi\Performist\Exception\PerformistException;
+use Guennichi\Performist\Registry;
+use Guennichi\Performist\Tests\Mock\InvalidAction;
+use Guennichi\Performist\Tests\Mock\SomeAction;
+use Guennichi\Performist\Tests\Mock\SomeHandler;
+use Guennichi\Performist\Tests\Mock\UndefinedAction;
+use Guennichi\Performist\Tests\Mock\ValidAction;
 use PHPUnit\Framework\TestCase;
 
 class RegistryTest extends TestCase
@@ -38,7 +39,7 @@ class RegistryTest extends TestCase
             $registry->add(ValidAction::class);
             $this->fail('No exception thrown.');
         } catch (PerformistException $e) {
-            $this->assertEquals('"Performist\\Mock\\ValidAction" is already registered inside the container.', $e->getMessage());
+            $this->assertEquals('"Guennichi\\Performist\\Tests\\Mock\\ValidAction" is already registered inside the container.', $e->getMessage());
         }
 
         // Add invalid action class.
@@ -46,7 +47,7 @@ class RegistryTest extends TestCase
             $registry->add(InvalidAction::class);
             $this->fail('No exception thrown.');
         } catch (PerformistException $e) {
-            $this->assertSame('"Performist\\Mock\\InvalidAction" should implements "Performist\\ActionInterface".', $e->getMessage());
+            $this->assertSame('"Guennichi\\Performist\\Tests\\Mock\\InvalidAction" should implements "Guennichi\\Performist\\ActionInterface".', $e->getMessage());
         }
 
         // Get undefined action handler
@@ -54,7 +55,7 @@ class RegistryTest extends TestCase
             $registry->get(UndefinedAction::class);
             $this->fail('No exception thrown.');
         } catch (PerformistException $e) {
-            $this->assertSame('The action class "Performist\\Mock\\UndefinedAction" is not registered inside the container.', $e->getMessage());
+            $this->assertSame('The action class "Guennichi\\Performist\\Tests\\Mock\\UndefinedAction" is not registered inside the container.', $e->getMessage());
         }
     }
 }

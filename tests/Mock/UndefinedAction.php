@@ -8,10 +8,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Performist\Mock;
+namespace Guennichi\Performist\Tests\Mock;
 
 
-use Performist\ActionInterface;
+use Guennichi\Performist\ActionInterface;
 
 class UndefinedAction implements ActionInterface
 {

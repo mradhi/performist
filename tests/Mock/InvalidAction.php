@@ -8,7 +8,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Performist\Mock;
+namespace Guennichi\Performist\Tests\Mock;
 
 
 class InvalidAction

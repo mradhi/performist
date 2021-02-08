@@ -8,13 +8,14 @@
  * file that was distributed with this source code.
  */
 
-namespace Performist;
+namespace Guennichi\Performist\Tests;
 
 
-use Performist\Mock\Middleware\MiddlewareBefore;
-use Performist\Mock\Middleware\MiddlewareAfter;
-use Performist\Mock\Middleware\MiddlewareBetween;
-use Performist\Mock\SomeAction;
+use Guennichi\Performist\HandlerPeeler;
+use Guennichi\Performist\Tests\Mock\Middleware\MiddlewareAfter;
+use Guennichi\Performist\Tests\Mock\Middleware\MiddlewareBefore;
+use Guennichi\Performist\Tests\Mock\Middleware\MiddlewareBetween;
+use Guennichi\Performist\Tests\Mock\SomeAction;
 use PHPUnit\Framework\TestCase;
 
 class HandlerPeelerTest extends TestCase

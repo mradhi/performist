@@ -8,13 +8,13 @@
  * file that was distributed with this source code.
  */
 
-namespace Performist\Mock\Middleware;
+namespace Guennichi\Performist\Tests\Mock\Middleware;
 
 
 use Closure;
-use Performist\ActionInterface;
-use Performist\MiddlewareInterface;
-use Performist\Mock\SomeAction;
+use Guennichi\Performist\ActionInterface;
+use Guennichi\Performist\MiddlewareInterface;
+use Guennichi\Performist\Tests\Mock\SomeAction;
 
 class MiddlewareAfter implements MiddlewareInterface
 {
