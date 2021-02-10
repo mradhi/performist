@@ -13,7 +13,7 @@ namespace Guennichi\Performist;
 
 use Guennichi\Performist\Exception\PerformistException;
 
-class Performer implements PerformerInterface
+class Performer
 {
     protected Registry $registry;
 
@@ -26,7 +26,14 @@ class Performer implements PerformerInterface
     }
 
     /**
-     * @inheritDoc
+     * Executes the handler of a given action.
+     *
+     * @param mixed $action
+     * @param MiddlewareInterface[] $middlewares
+     *
+     * @return mixed
+     *
+     * @throws PerformistException
      */
     public function perform($action, array $middlewares = [])
     {
