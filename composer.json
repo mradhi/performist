@@ -1,6 +1,6 @@
 {
     "name": "guennichi/performist",
-    "description": "PHP library to perform a group of actions elegantly",
+    "description": "Lightweight PHP library to perform a group of actions elegantly",
     "type": "library",
     "license": "MIT",
     "homepage": "https://guennichi.com",

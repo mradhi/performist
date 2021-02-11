@@ -3,7 +3,7 @@
 [![Build Status](https://www.travis-ci.com/mradhi/performist.svg?branch=main)](https://www.travis-ci.com/mradhi/performist)
 [![Coverage Status](https://coveralls.io/repos/github/mradhi/performist/badge.svg?branch=main)](https://coveralls.io/github/mradhi/performist?branch=main)
 
-A standalone action performer library without dependencies.
+Lightweight synchronous action performer library without dependencies.
 
 ## Installation
 
