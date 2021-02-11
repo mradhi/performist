@@ -10,6 +10,13 @@
             "email": "radhi@guennichi.com"
         }
     ],
+    "require": {
+        "php": ">=7.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5",
+        "php-coveralls/php-coveralls": "^2.4"
+    },
     "autoload": {
         "psr-4": {
             "Guennichi\\Performist\\": "lib/"
@@ -19,12 +26,5 @@
         "psr-4": {
             "Guennichi\\Performist\\Tests\\": "tests/"
         }
-    },
-    "require": {
-        "php": ">=7.4"
-    },
-    "require-dev": {
-        "phpunit/phpunit": "^9.5",
-        "php-coveralls/php-coveralls": "^2.4"
     }
 }
