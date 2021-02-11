@@ -13,6 +13,7 @@ namespace Guennichi\Performist\Tests;
 
 use Guennichi\Performist\Exception\PerformistException;
 use Guennichi\Performist\Registry;
+use Guennichi\Performist\Tests\Mock\InvalidHandler;
 use Guennichi\Performist\Tests\Mock\SomeAction;
 use Guennichi\Performist\Tests\Mock\SomeHandler;
 use Guennichi\Performist\Tests\Mock\UndefinedAction;
@@ -38,7 +39,15 @@ class RegistryTest extends TestCase
             $registry->add(ValidAction::class);
             $this->fail('No exception thrown.');
         } catch (PerformistException $e) {
-            $this->assertEquals('"Guennichi\\Performist\\Tests\\Mock\\ValidAction" is already registered inside the container.', $e->getMessage());
+            $this->assertEquals('You cannot register the action class "Guennichi\Performist\Tests\Mock\ValidAction" twice.', $e->getMessage());
+        }
+
+        // Add the same action one more time
+        try {
+            $registry->add(SomeAction::class, new InvalidHandler());
+            $this->fail('No exception thrown.');
+        } catch (PerformistException $e) {
+            $this->assertEquals('The action class "Guennichi\Performist\Tests\Mock\SomeAction" already have a handler "Guennichi\Performist\Tests\Mock\SomeHandler", you cannot add the new handler "Guennichi\Performist\Tests\Mock\InvalidHandler" for this action.', $e->getMessage());
         }
 
         // Add invalid action class.

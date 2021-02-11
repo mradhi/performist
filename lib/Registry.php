@@ -28,7 +28,7 @@ class Registry
         $this->validateActionClass($actionClass);
 
         if (array_key_exists($actionClass, $this->container)) {
-            if (null !== $existedHandler = $this->container[$actionClass]) {
+            if (null !== $handler && null !== $existedHandler = $this->container[$actionClass]) {
                 throw new PerformistException(sprintf('The action class "%s" already have a handler "%s", you cannot add the new handler "%s" for this action.', $actionClass, get_class($existedHandler), get_class($handler)));
             }
 
