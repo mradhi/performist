@@ -12,6 +12,7 @@ namespace Guennichi\Performist\Tests;
 
 
 use Guennichi\Performist\Exception\PerformistException;
+use Guennichi\Performist\HandlerInterface;
 use Guennichi\Performist\HandlerPeeler;
 use Guennichi\Performist\Performer;
 use Guennichi\Performist\Registry;
@@ -31,7 +32,7 @@ class PerformerTest extends TestCase
         $registry->add(SomeAction::class, new SomeHandler());
 
         $performer = new Performer($registry, new HandlerPeeler());
-        $result = $performer->perform(new SomeAction(), [new MiddlewareBefore(), new MiddlewareAfter()]);
+        $result = $performer->perform(new SomeAction(), null, [new MiddlewareBefore(), new MiddlewareAfter()]);
 
         $this->assertInstanceOf(SomeAction::class, $result);
 
@@ -52,10 +53,23 @@ class PerformerTest extends TestCase
         $result = $performer->perform(new ActionWithoutHandler());
 
         $this->assertNull($result);
+
+        // Perform action with explicit handler
+        $result = $performer->perform(new ActionWithoutHandler(), new ExplicitHandler());
+
+        $this->assertSame('executed', $result);
     }
 }
 
 class ActionWithoutHandler
 {
 
+}
+
+class ExplicitHandler implements HandlerInterface
+{
+    public function __invoke($action): string
+    {
+        return 'executed';
+    }
 }

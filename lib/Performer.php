@@ -29,15 +29,18 @@ class Performer
      * Executes the handler of a given action.
      *
      * @param mixed $action
+     * @param HandlerInterface|null $handler
      * @param MiddlewareInterface[] $middlewares
      *
      * @return mixed
      *
      * @throws PerformistException
      */
-    public function perform($action, array $middlewares = [])
+    public function perform($action, ?HandlerInterface $handler = null, array $middlewares = [])
     {
-        $handler = $this->registry->get(get_class($action));
+        if (null === $handler) {
+            $handler = $this->registry->get(get_class($action));
+        }
 
         if (null === $handler) {
             return null;
