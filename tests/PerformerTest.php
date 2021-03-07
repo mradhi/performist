@@ -32,7 +32,7 @@ class PerformerTest extends TestCase
         $registry->add(SomeAction::class, new SomeHandler());
 
         $performer = new Performer($registry, new HandlerPeeler());
-        $result = $performer->perform(new SomeAction(), null, [new MiddlewareBefore(), new MiddlewareAfter()]);
+        $result = $performer->perform(new SomeAction(), [new MiddlewareBefore(), new MiddlewareAfter()]);
 
         $this->assertInstanceOf(SomeAction::class, $result);
 
@@ -54,13 +54,9 @@ class PerformerTest extends TestCase
 
         $this->assertNull($result);
 
-        // Perform action with explicit handler
-        $result = $performer->perform(new ActionWithoutHandler(), new ExplicitHandler());
-
-        $this->assertSame('executed', $result);
-
-        // Perform action with explicit handler
-        $result = $performer->perform(new ActionWithoutHandler(), new ContextHandler(), [], 'context');
+        // Perform action with context
+        $registry->add(ContextAction::class, new ContextHandler());
+        $result = $performer->perform(new ContextAction(), [], 'context');
 
         $this->assertSame('context', $result);
     }
@@ -71,12 +67,9 @@ class ActionWithoutHandler
 
 }
 
-class ExplicitHandler implements HandlerInterface
+class ContextAction
 {
-    public function __invoke($action): string
-    {
-        return 'executed';
-    }
+
 }
 
 class ContextHandler implements HandlerInterface
