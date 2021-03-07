@@ -58,6 +58,11 @@ class PerformerTest extends TestCase
         $result = $performer->perform(new ActionWithoutHandler(), new ExplicitHandler());
 
         $this->assertSame('executed', $result);
+
+        // Perform action with explicit handler
+        $result = $performer->perform(new ActionWithoutHandler(), new ContextHandler(), [], 'context');
+
+        $this->assertSame('context', $result);
     }
 }
 
@@ -71,5 +76,13 @@ class ExplicitHandler implements HandlerInterface
     public function __invoke($action): string
     {
         return 'executed';
+    }
+}
+
+class ContextHandler implements HandlerInterface
+{
+    public function __invoke($action, $context): string
+    {
+        return $context;
     }
 }

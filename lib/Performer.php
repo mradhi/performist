@@ -31,12 +31,13 @@ class Performer
      * @param mixed $action
      * @param HandlerInterface|null $handler
      * @param MiddlewareInterface[] $middlewares
+     * @param mixed $context
      *
      * @return mixed
      *
      * @throws PerformistException
      */
-    public function perform($action, ?HandlerInterface $handler = null, array $middlewares = [])
+    public function perform($action, ?HandlerInterface $handler = null, array $middlewares = [], $context = null)
     {
         if (null === $handler) {
             $handler = $this->registry->get(get_class($action));
@@ -52,8 +53,8 @@ class Performer
 
         return $this->handlerPeeler
             ->middlewares($middlewares)
-            ->peel($action, function ($action) use ($handler) {
-                return $handler($action);
+            ->peel($action, function ($action) use ($handler, $context) {
+                return $handler($action, $context);
             });
     }
 }
